@@ -17,6 +17,7 @@ import { parsearLibro, redondear } from './utilidades.js';
  * @property {Libro} libro Libro prestado.
  * @property {Socio} socio Socio que lo tiene o lo tuvo.
  * @property {number} diaLimite Día en que vence el préstamo.
+ * @property {number} [multa] Multa pagada al devolverlo (solo en el historial).
  */
 
 /**
@@ -92,7 +93,7 @@ export class Biblioteca {
 
   /**
    * Historial de todos los préstamos, en el orden en que se hicieron, con su multa si se devolvieron.
-   * @type {Array<Prestamo & { multa: number }>}
+   * @type {Prestamo[]}
    */
   #historial = [];
 
@@ -108,7 +109,7 @@ export class Biblioteca {
    *
    * @param {'prestamo'|'devolucion'} evento Nombre del evento.
    * @param {Oyente} oyente Función a la que se avisa.
-   * @returns {() => void} Función que da de baja la suscripción.
+   * @returns {function(): void} Función que da de baja la suscripción.
    * @throws {TypeError} Si `oyente` no es una función.
    */
   on(evento, oyente) {

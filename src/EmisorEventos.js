@@ -33,7 +33,7 @@ export class EmisorEventos {
    *
    * @param {string} evento Nombre del evento.
    * @param {Oyente} oyente Función a la que se avisa.
-   * @returns {() => void} Función que da de baja la suscripción al llamarla.
+   * @returns {function(): void} Función que da de baja la suscripción al llamarla.
    * @throws {TypeError} Si `oyente` no es una función.
    */
   on(evento, oyente) {

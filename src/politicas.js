@@ -13,7 +13,7 @@
  * @typedef {object} Politica
  * @property {number} maxPrestamos Préstamos que puede tener a la vez.
  * @property {number} diasPrestamo Días que dura un préstamo.
- * @property {(diasRetraso: number) => number} multa Multa en euros por los días de retraso.
+ * @property {function(number): number} multa Multa en euros por los días de retraso.
  */
 
 /**
@@ -23,7 +23,7 @@
  * - `estudiante`: 3 préstamos, 21 días, 0,20 € por día con un máximo de 5 €.
  * - `profesorado`: 5 préstamos, 30 días, sin multa.
  *
- * @type {Readonly<Record<string, Readonly<Politica>>>}
+ * @type {Object<string, Politica>}
  */
 export const POLITICAS = Object.freeze({
   general: Object.freeze({
@@ -46,6 +46,6 @@ export const POLITICAS = Object.freeze({
 /**
  * Tipos de socio disponibles, calculados a partir de `POLITICAS`.
  *
- * @type {readonly string[]}
+ * @type {string[]}
  */
 export const TIPOS_SOCIO = Object.freeze(Object.keys(POLITICAS));
