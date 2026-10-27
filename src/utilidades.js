@@ -45,7 +45,7 @@ export function parsearLibro(linea, anioMaximo = 2100) {
   }
   const [isbn, titulo, autor, textoAnio, textoEtiquetas] = campos;
   const anio = Number(textoAnio);
-  if (isbn == '' || titulo === '') {
+  if (isbn === '' || titulo === '') {
     return null;
   }
   if (!Number.isInteger(anio) || anio < ANIO_MINIMO || anio > anioMaximo) {
