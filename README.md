@@ -456,4 +456,21 @@ Checking formatting...
 All matched files use Prettier code style!
 ```
 
-@@CI@@
+## Integración continua (opcional)
+
+El workflow está en [`.github/workflows/ci.yml`](.github/workflows/ci.yml): un único trabajo en `ubuntu-latest` con ocho pasos: «Descargar el código», «Instalar Node.js 24 con caché de npm», «Instalar las dependencias» (`npm ci`), «Revisar el código con ESLint», «Comprobar el formato con Prettier», «Ejecutar los tests», «Generar la documentación» (`npm run docs`) y «Publicar la documentación como artefacto» (`actions/upload-artifact@v7`, `name: documentacion`, `path: docs/`).
+
+1. **Ejecución en verde:** <https://github.com/Javi7142/dwec-ud3-e11-biblioteca/actions/runs/40570064268>
+2. **Captura de la ejecución en verde con sus ocho pasos:**
+
+   ![Ejecución en verde con los ocho pasos](img/ci-verde.jpg)
+
+   En el resumen de la ejecución aparece, en **Artifacts**, el artefacto `documentacion` (438 KB), con la web generada por `npm run docs`:
+
+   ![Resumen de la ejecución con el artefacto documentacion](img/ci-artefacto.jpg)
+
+3. **Ejecución en rojo provocada a propósito:** <https://github.com/Javi7142/dwec-ud3-e11-biblioteca/actions/runs/40570210426>. Escribí `==` en lugar de `===` en `src/utilidades.js` (`if (isbn == '' || titulo === '')`) y lo subí. La ejecución falló en el paso **«Revisar el código con ESLint»** (la regla `eqeqeq` de la configuración del curso), con los cuatro pasos anteriores en verde y los siguientes (Prettier, tests, documentación y artefacto) sin ejecutarse:
+
+   ![Ejecución en rojo con el paso que falla](img/ci-rojo.jpg)
+
+   Después deshice el cambio (`===`) y la ejecución volvió a verde: <https://github.com/Javi7142/dwec-ud3-e11-biblioteca/actions/runs/40570331526>.
