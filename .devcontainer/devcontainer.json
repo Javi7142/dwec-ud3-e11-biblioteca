@@ -1,0 +1,18 @@
+{
+  "name": "DWEC - E11-Biblioteca",
+  "build": { "dockerfile": "Dockerfile" },
+  "runArgs": ["--security-opt", "label=disable"],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "vitest.explorer",
+        "usernamehw.errorlens",
+        "bierner.markdown-mermaid"
+      ]
+    }
+  },
+  "postCreateCommand": "npm install && node --version && npm --version && echo '✅ Contenedor listo'",
+  "remoteUser": "node"
+}

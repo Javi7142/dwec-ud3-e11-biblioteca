@@ -1,0 +1,4 @@
+{
+  "source": { "include": ["src"], "includePattern": "\\.js$" },
+  "opts": { "destination": "docs", "recurse": true, "readme": "README.md" }
+}
