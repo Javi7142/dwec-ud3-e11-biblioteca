@@ -215,7 +215,7 @@ Los _callbacks_ de `map`, `filter` y `reduce` son puros: no modifican nada fuera
 
 ## Depuración
 
-Sesión real con el depurador de Node.js. No he usado el panel de VS Code, que no está disponible en mi entorno de trabajo, sino el mismo depurador (el protocolo del inspector de V8 con el que se conectan VS Code y Chrome DevTools) manejado con un pequeño script, [`scripts/depurar.js`](scripts/depurar.js), que lanza `node --inspect-brk src/main.js`, pone el punto de ruptura y muestra lo que mostrarían los paneles de VS Code. Se ejecuta con `node scripts/depurar.js`.
+Sesión real con el depurador de Node.js. En lugar de usar los paneles de VS Code, uso el mismo depurador (el protocolo del inspector de V8 con el que se conectan VS Code y Chrome DevTools) manejado con un pequeño script, [`scripts/depurar.js`](scripts/depurar.js), que lanza `node --inspect-brk src/main.js`, pone el punto de ruptura y muestra lo que mostrarían los paneles de VS Code. Se ejecuta con `node scripts/depurar.js`.
 
 **1. Qué quería entender.** En la salida de `npm start`, Ana devuelve «El hobbit» con 37 días de retraso y paga 5.00 €, no 7.40 € (37 × 0,20 €). Quería ver el cálculo de la multa y confirmar que el tope del estudiante se aplica ahí.
 
